@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blick & Blinzeln: Quadrate löschen</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- WebGazer + MediaPipe FaceMesh (head pose) -->
+  <script src="https://cdn.jsdelivr.net/npm/webgazer/dist/webgazer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+</head>
+<body>
+  <header class="overlay">
+    <div class="status" id="status">Bitte Kamera erlauben. Ein Quadrat anblicken und blinzeln, um es zu löschen.</div>
+    <div class="controls">
+      <button id="reset">Quadrate zurücksetzen</button>
+      <button id="toggle-debug" aria-pressed="false">Debug anzeigen</button>
+      <button id="calibrate">Kalibrierung starten</button>
+      <label class="inline">
+        Vertikale Skalierung
+        <input id="scaleYInput" type="range" min="0.8" max="2.0" step="0.05" value="1.35" />
+      </label>
+      <label class="inline">
+        Horizontale Skalierung
+        <input id="scaleXInput" type="range" min="0.8" max="1.6" step="0.05" value="1.0" />
+      </label>
+    </div>
+  </header>
+
+  <main id="grid" aria-label="Neun Felder"></main>
+  <div id="done" class="hidden">Alles gelöscht!</div>
+  <div id="gaze-dot" class="hidden" aria-hidden="true"></div>
+  <div id="debug" class="hidden" aria-live="polite"></div>
+  <div id="calibration" class="hidden" aria-live="polite">
+    <div class="cal-card">
+      <div class="cal-title">Kalibrierung</div>
+      <div class="cal-text">Blicken Sie nacheinander auf den Punkt und halten Sie den Blick ca. 1 Sekunde, die Werte werden automatisch erfasst.</div>
+      <div class="cal-progress" id="cal-progress">1 / 5</div>
+    </div>
+    <div id="cal-target"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
