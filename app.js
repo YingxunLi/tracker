@@ -10,6 +10,7 @@ const calibrateBtn = document.getElementById("calibrate");
 const calOverlay = document.getElementById("calibration");
 const calTargetEl = document.getElementById("cal-target");
 const calProgressEl = document.getElementById("cal-progress");
+// （保持原始实现，不包含背景字母相关代码）
 
 const BLINK_MIN_MS = 80;
 const BLINK_MAX_MS = 450;
